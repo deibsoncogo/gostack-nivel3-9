@@ -129,3 +129,7 @@ Também criamos o arquivo abaixo para pode realizar as configurações
     arrowParens: 'avoid',
     printWidth: 91,
   }
+
+--> Figma Github Explorer
+Temos abaixo o link da arte para o nosso programa (API)
+  https://www.figma.com/file/HOCmxfrElzLpI75LdzFLia/Github-Explorer?node-id=0%3A1
