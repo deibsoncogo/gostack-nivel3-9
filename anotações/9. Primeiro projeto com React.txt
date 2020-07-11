@@ -26,3 +26,12 @@ Algusn arquivos podemos excluir mais ai teremos que remover sua importar nos out
   logo192.png
   logo512.png
   manifest.json
+
+A depencia react-scripts possui internamente muitas das extenções que instalamos
+conforme precisamos, os atalhos criado automaticamente serve para
+  strat: Iniciar o servidor de desenvolvimento para nos verificar
+  build: Gerar um servidor mais otimizado para a produção
+  test: Para rodar alguns testes na aplicação
+  eject: Traz os arquivos de configuração das depencias dentro do react-scripts
+
+A ejeção das configurações das depencias dentro do react-scripts, não possui volta
