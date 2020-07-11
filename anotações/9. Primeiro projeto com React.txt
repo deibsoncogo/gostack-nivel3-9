@@ -35,3 +35,97 @@ conforme precisamos, os atalhos criado automaticamente serve para
   eject: Traz os arquivos de configuração das depencias dentro do react-scripts
 
 A ejeção das configurações das depencias dentro do react-scripts, não possui volta
+
+--> Padrões de Projeto com Eslint, Prettier e Editor Config
+Primeiro instalamos a extensão do EditorConfig e depois criamos o arquivo de
+configuração do EditorConfig cliando o botão direito e criar e inserir este comandos
+  root = true
+
+  [*]
+  indent_style = space
+  indent_size = 2
+  charset = utf-8
+  trim_trailing_whitespace = true
+  insert_final_newline = true
+  end_of_line = crlf
+
+Agora devemos instalar a extensão e a depencia com desenvolvedor do ESLint
+  yarn add eslint -D
+
+Também remover uma configuração no package.json para remover uma extenção dele
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+
+Para criar o arquivo de configuração do Eslint usamos o comando abaixo
+  yarn eslint --init
+
+Respondemos as perguntas e depois instalamos as dependencias que precisaremos:
+  ? How would you like to use ESLint? To check syntax, find problems, and enforce code style
+  ? What type of modules does your project use? JavaScript modules (import/export)
+  ? Which framework does your project use? React
+  ? Does your project use TypeScript? Yes
+  ? Where does your code run? Node
+  ? How would you like to define a style for your project? Use a popular style guide
+  ? Which style guide do you want to follow? Airbnb: https://github.com/airbnb/javascript
+  ? What format do you want your config file to be in? JSON
+
+Depois de responser as pergutnas cima teremos farias dependencias para instalar
+  yarn add eslint-plugin-react@^7.20.0 @typescript-eslint/eslint-plugin@latest eslint-config-airbnb@latest eslint@^7.2.0 eslint-plugin-import@^2.21.2 eslint-plugin-jsx-a11y@^6.3.0 eslint-plugin-react-hooks@^2.3.0 @typescript-eslint/parser@latest -D
+
+Criamos um arquivo para ignoração sua execução nos seguintes caminhos
+  .eslintignore
+
+  /*.js
+  node_modules
+  dist
+
+Faz o React ler e entender os arquivos TypeScript
+  yarn add eslint-import-resolver-typescript -D
+
+Apos adicionar as configurações abaixo no arquivo .eslint.json ficaram pronto
+  "extends": [
+    "airbnb-base",
+		"plugin:@typescript-eslint/recommended"
+  ],
+  "rules": {
+    "import/extensions": [
+      "error",
+      "ignorePackages",
+      {
+        "ts": "never"
+      }
+    ]
+  },
+  "settings": {
+    "import/resolver": {
+      "typescript": {}
+    }
+  }
+
+Para instalar com a utilização do ReactJS devemos realizar outros passo
+
+Temos que instalar as seguintes depencias para utilizar o Prettier
+  yarn add prettier eslint-config-prettier eslint-plugin-prettier -D
+
+Realizamos algumas configurações para incorporar o Prettier no Eslint
+  "extends": [
+    "prettier/@typescript-eslint",
+    "plugin:prettier/recommended"
+  ],
+  "plugins": [
+    "prettier"
+  ],
+  "rules": {
+    "prettier/prettier": "error",
+  },
+
+Também criamos o arquivo abaixo para pode realizar as configurações
+  prettier.config.js
+
+  module.exports = {
+    singleQuote: true,
+    trailingComma: 'all',
+    arrowParens: 'avoid',
+    printWidth: 91,
+  }
