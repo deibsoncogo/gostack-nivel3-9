@@ -1,0 +1,28 @@
+Rocketseat Bootcamp GoStack - Nível 3
+
+------> 9. Primeiro projeto com React
+Nessa etapa daremos início ao aprendizado do ReactJS, criando o primeiro projeto já
+utilizando TypeScript, nesse ponto o dev já deve conhecer os conceitos de componente,
+estado e propriedades mas eles serão lembrados durante as aulas
+
+----> 1. Estrutura e padrões
+--> Criando projeto
+Neste nível iremos montar o projeto utilizando o React sem a realização de fatorização
+do código pois já aprendemos os metodos de uma doa programação
+
+O comando abaixo realiza a criacao dos arquivos base para o nosso projeto, este
+comando também realiza diversas configurações que realizamos manualmente, por padrão
+ele cria os arquivos com o formato de JavaScript, com alterar isso adicionamos um
+comando para mudar pro TypeScript e está configuração tende a demorar
+	create-react-app nivel3 --template=typescript
+
+Algusn arquivos podemos excluir mais ai teremos que remover sua importar nos outros
+  App.css
+  App.test.tsx
+  index.css
+  logo.svg
+  serviceWorker.ts
+  favicon.ico
+  logo192.png
+  logo512.png
+  manifest.json
