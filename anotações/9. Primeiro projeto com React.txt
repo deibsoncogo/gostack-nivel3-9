@@ -42,7 +42,7 @@ configuração do EditorConfig cliando o botão direito e criar e inserir este c
   root = true
 
   [*]
-  indent_style = space
+  indent_style = tab
   indent_size = 2
   charset = utf-8
   trim_trailing_whitespace = true
@@ -50,9 +50,11 @@ configuração do EditorConfig cliando o botão direito e criar e inserir este c
   end_of_line = crlf
 
 Agora devemos instalar a extensão e a depencia com desenvolvedor do ESLint
-  yarn add eslint -D
+  yarn add eslint@6.8.0 -D
 
-Também remover uma configuração no package.json para remover uma extenção dele
+Atenção a versão mais recente do Eslint está gerando conflitos
+
+Temos que sertificar se a configuração abaixo está no arquivo package.json
   "eslintConfig": {
     "extends": "react-app"
   },
@@ -62,16 +64,16 @@ Para criar o arquivo de configuração do Eslint usamos o comando abaixo
 
 Respondemos as perguntas e depois instalamos as dependencias que precisaremos:
   ? How would you like to use ESLint? To check syntax, find problems, and enforce code style
-  ? What type of modules does your project use? JavaScript modules (import/export)
-  ? Which framework does your project use? React
-  ? Does your project use TypeScript? Yes
-  ? Where does your code run? Node
-  ? How would you like to define a style for your project? Use a popular style guide
-  ? Which style guide do you want to follow? Airbnb: https://github.com/airbnb/javascript
-  ? What format do you want your config file to be in? JSON
+	? What type of modules does your project use? JavaScript modules (import/export)
+	? Which framework does your project use? None of these
+	? Does your project use TypeScript? Yes
+	? Where does your code run? Node
+	? How would you like to define a style for your project? Use a popular style guide
+	? Which style guide do you want to follow? Airbnb: https://github.com/airbnb/javascript
+	? What format do you want your config file to be in? JSON
 
 Depois de responser as pergutnas cima teremos farias dependencias para instalar
-  yarn add eslint-plugin-react@^7.20.0 @typescript-eslint/eslint-plugin@latest eslint-config-airbnb@latest eslint@^7.2.0 eslint-plugin-import@^2.21.2 eslint-plugin-jsx-a11y@^6.3.0 eslint-plugin-react-hooks@^2.3.0 @typescript-eslint/parser@latest -D
+  yarn add @typescript-eslint/eslint-plugin@latest eslint-config-airbnb-base@latest eslint-plugin-import@^2.21.2 @typescript-eslint/parser@latest -D
 
 Criamos um arquivo para ignoração sua execução nos seguintes caminhos
   .eslintignore
@@ -85,8 +87,7 @@ Faz o React ler e entender os arquivos TypeScript
 
 Apos adicionar as configurações abaixo no arquivo .eslint.json ficaram pronto
   "extends": [
-    "airbnb-base",
-		"plugin:@typescript-eslint/recommended"
+		"plugin:@typescript-eslint/recommended",
   ],
   "rules": {
     "import/extensions": [
@@ -133,3 +134,21 @@ Também criamos o arquivo abaixo para pode realizar as configurações
 --> Figma Github Explorer
 Temos abaixo o link da arte para o nosso programa (API)
   https://www.figma.com/file/HOCmxfrElzLpI75LdzFLia/Github-Explorer?node-id=0%3A1
+
+----> 2. Criando a aplicação
+--> Criando Rotas
+O formato TSX serve para trabalhar com JavaScript ou TypeScript e HTML
+
+Para lidar com as rotas iremos usar a depencia abaixo para React
+  yarn add react-router-dom
+  yarn add @types/react-router-dom -D
+
+Ao criar um arquivo conseguimos também criar pastas, para isso bastar escrevermos o
+caminho separando o nome das pastas por barra e informando a extenção do arquivo
+  pages/inicial/index.tsx
+
+O BrowserRouter define o endereço do site e o exact faz que o endereço buscado
+deve ser igual ao do sistema
+
+Devemos usar o comando abaixo da depencia do React Router Dom para difidir as rotas
+	Switch

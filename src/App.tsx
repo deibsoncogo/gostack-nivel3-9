@@ -1,9 +1,12 @@
 import React from 'react';
+import { BrowserRouter } from 'react-router-dom';
 
-function App() {
-  return (
-    <h1>Hello Word</h1>
-  );
-}
+import Rotas from './routes';
+
+const App: React.FC = () => (
+	<BrowserRouter>
+		<Rotas />
+	</BrowserRouter>
+);
 
 export default App;
