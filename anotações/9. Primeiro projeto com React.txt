@@ -175,3 +175,23 @@ conseguimos isso no site do Google Fonts
     Copiar o link
     Cola no public/index.html
 			<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+--> Estilizando Dashboard (Home)
+Temos a biblioteca Polished que permite trabalhar com cores
+  yarn add polished
+
+Para criar a lista dos repositorios usamos uma div pois ele possuir link,
+na utilização de ul teremos que adaptala para receber link
+
+Quando algo é clicavel precisa ser uma ancora ou um botão
+É legal primeiro criar a estrutura para depois vincular com o banco de dados
+
+Para realizar um bom aliamento dos itens devemos criar novas divs,
+isso deve acontecer quando o próximo item muda de direção
+	AA	BB
+			CC
+
+A biblioteca abaixo disponibiliza icones interesantes
+  yarn add react-icons
+
+Verifique nos arquivos styles.ts os comandos de estilização
