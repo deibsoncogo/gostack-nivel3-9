@@ -23,6 +23,8 @@
 		"prettier"
 	],
 	"rules": {
+		// PERMITI EXPORTAR SEM DEFAULT
+		"import/prefer-default-export": "off",
 		"prettier/prettier": "error",
     "import/extensions": [
       "error",

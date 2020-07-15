@@ -152,3 +152,26 @@ deve ser igual ao do sistema
 
 Devemos usar o comando abaixo da depencia do React Router Dom para difidir as rotas
 	Switch
+
+--> Utilizando Styled Components
+A depencia abaixo é muito importante para todos tipos de React pois ele permite a
+criação de personalização isolada (CSS) já que todo CSS é considerado como global
+sem a utilização de uma classe
+  yarn add styled-components
+	yarn add @types/styled-components -D
+
+A extenção abaixo deixa os arquivos da depencia styled-components igual de um CSS
+  vscode-styled-components
+
+Para definir uma fonte especifica vamos precisar de um código dela,
+conseguimos isso no site do Google Fonts
+  https://fonts.google.com/
+    Escole a fonte
+			Reboto
+    Select this style
+			Regular 400
+			Bold 700
+    Embed
+    Copiar o link
+    Cola no public/index.html
+			<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
