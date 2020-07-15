@@ -195,3 +195,18 @@ A biblioteca abaixo disponibiliza icones interesantes
   yarn add react-icons
 
 Verifique nos arquivos styles.ts os comandos de estilização
+
+--> Conectando a API
+Para criar um vinculo do frontend com backend (Banco de dados) usamos esta dependencia
+  yarn add axios
+
+É interesante identificar quais funções ou classes são executados pelo usuário
+
+Quando enviamos algum form HTML ele atualiza a página, para controlar isso
+devemos utilizar o event do FormEvent do React, ele deve utilizar o HTMLFormElement
+
+Devemos tipar os itens em uma interface somente para os itens que iremos utilizar
+
+Para hooks sempre devemos utilizar nome de variaveis com a primeira letra
+em maiúscula, prestar atenção para quando uma variavel é utilizada como uma classe
+para neste caso colocar a primeira letra em maiúscula

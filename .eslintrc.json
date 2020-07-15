@@ -23,8 +23,16 @@
 		"prettier"
 	],
 	"rules": {
+		// DESATIVA REGRA DE APLICACAO DO _
+		"camelcase": "off",
 		// PERMITI EXPORTAR SEM DEFAULT
 		"import/prefer-default-export": "off",
+		"@typescript-eslint/no-unused-vars": "off",
+		"@typescript-eslint/explicit-function-return-type": [
+			"error", {
+				"allowExpressions": true
+			}
+		],
 		"prettier/prettier": "error",
     "import/extensions": [
       "error",
