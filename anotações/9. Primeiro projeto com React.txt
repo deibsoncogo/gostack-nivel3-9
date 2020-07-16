@@ -237,3 +237,23 @@ Uma jeito de programar com facilidade é seguindo esta ordem
  Primeiro se preucupar com o código HTML
  Depois implementar a estilização (CSS)
  Por último colocar os códigos do JavaScript ou TypeScript
+
+--> Listando issues da API
+As regras de hooks do Eslint ajuda bastante a evitar erros
+Quando utilizamos variaveis com o useEffect na maioria das vezes teremos
+que vincular uma variavel para os dados manterem atualizados
+
+Para desativar uma verificação do Eslint usamos o seguinte comando
+  //eslint-disable-line
+
+O useEffect é asincrona com isso não podemos utilizar o async e await
+Para forçar a executação de comando async await ao mesmo tempo temos o Promise.all
+	async function NomeDela(): Promise<void> {
+		const [primeiro, segundo] = await Promise.all([
+			api.get(comandoPrimeiro),
+			api.get(comandoSegundo)
+		]);
+	}
+
+Toda vez que criamos um useState com valor inicial array ou objeto temos
+que criar uma interface para ele
