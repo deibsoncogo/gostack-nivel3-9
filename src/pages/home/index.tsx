@@ -2,7 +2,7 @@ import React, { useState, FormEvent } from 'react';
 import { FiChevronRight } from 'react-icons/fi';
 
 import ApiServico from '../../services/api';
-import { Titulo, CampoPesquisa, Repositorio } from './styles';
+import { Titulo, CampoPesquisa, Repositorio, Erro } from './styles';
 import ImagemGithub from '../../assets/imagem-github.svg';
 
 // DEVEMOS TIPAR SOMENTES OS ITENS QUE IREMOS UTILIZAR
@@ -19,6 +19,8 @@ interface Repositorio {
 // AMBOS COMANDOS SAO IGUAIS MAIS O SEGUNDO POSSUI UM VINCULO DE TIPAGEM MAIS FACIL
 // function Home() {}
 const Home: React.FC = () => {
+	// PARA SALVAR AS MENSAGENS DE ERRO
+	const [erro, setErro] = useState('');
 	// PARA SALVAR OS CRITERIOS DE BUSCA
 	const [novoRepositorio, setNovoRepositorio] = useState('');
 	// PARA SALVAR OS REPOSITORIOS JA PESQUISADO
@@ -30,16 +32,26 @@ const Home: React.FC = () => {
 		// DESATIVA ATUALIZACAO DA PAGINA
 		event.preventDefault();
 
-		// BUSCA A INFORMACAO
-		const response = await ApiServico.get<Repositorio>(`repos/${novoRepositorio}`);
+		if (!novoRepositorio) {
+			setErro('Digite o author/nome do repositorio');
+			return;
+		}
 
-		const repositorio = response.data;
+		try {
+			// BUSCA A INFORMACAO
+			const response = await ApiServico.get<Repositorio>(`repos/${novoRepositorio}`);
 
-		// SALVA A INFORMACAO UTILIZANDO A IMUTABILIDADE
-		setRepositorios([...repositorios, repositorio]);
+			const repositorio = response.data;
 
-		// APAGA OS ITENS DIGITADO
-		setNovoRepositorio('');
+			// SALVA A INFORMACAO UTILIZANDO A IMUTABILIDADE
+			setRepositorios([...repositorios, repositorio]);
+
+			// APAGA OS ITENS DIGITADO
+			setNovoRepositorio('');
+			setErro('');
+		} catch (err) {
+			setErro('Repositorio não encontrado');
+		}
 	}
 
 	return (
@@ -49,7 +61,10 @@ const Home: React.FC = () => {
 			<Titulo>Explore repositórios no Github</Titulo>
 
 			{/* EXECUTAR UMA FUNCAO QUANDO ACONTECER UM SUBMIT */}
-			<CampoPesquisa onSubmit={usuarioAdicionarRepositorio}>
+			{/* OS DOIS !! VAI VERIFICAR SE A VARIAVEL POSSUI VALOR */}
+			{/* ! DEFINE PARA EXECUTAR A TAREFA QUANDO FOR true */}
+			{/* !! DEFINE PARA EXECUTAR A TAREFA QUANDO FOR false */}
+			<CampoPesquisa temErro={!!erro} onSubmit={usuarioAdicionarRepositorio}>
 				{/* CRIA UM CAMPO PARA PESQUISA COM ESTE TEXTO DENTRO */}
 				<input
 					// SALVO O DIGITADO DENTRO DESTA VARIAVEL
@@ -62,6 +77,9 @@ const Home: React.FC = () => {
 				{/* CRIA UM BOTAO DO TIPO SUBMIT COM ESTE TEXTO DENTRO */}
 				<button type="submit">Pesquisar</button>
 			</CampoPesquisa>
+
+			{/* MESMA COISA QUE UM if */}
+			{erro && <Erro>{erro}</Erro>}
 
 			<Repositorio>
 				{/* REALIZA UMA LISTAGEM DE TODOS DADOS SALVO */}

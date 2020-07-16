@@ -210,3 +210,10 @@ Devemos tipar os itens em uma interface somente para os itens que iremos utiliza
 Para hooks sempre devemos utilizar nome de variaveis com a primeira letra
 em maiúscula, prestar atenção para quando uma variavel é utilizada como uma classe
 para neste caso colocar a primeira letra em maiúscula
+
+--> Lidando com erros
+A biblioteca de estilos permite criar condições de estilos
+Assim certas alterações acontece quando algo acontecer como um erro
+
+Uma string, objeto ou uma outra coisa que não esteja vazio em uma comparação,
+recebe o valor de true e caso contratio falso
