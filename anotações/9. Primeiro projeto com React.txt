@@ -217,3 +217,11 @@ Assim certas alterações acontece quando algo acontecer como um erro
 
 Uma string, objeto ou uma outra coisa que não esteja vazio em uma comparação,
 recebe o valor de true e caso contratio falso
+
+--> Salvando no Storage
+O Storage permite salvar algo, ele é um item separado por endereço, assim se tivemos
+mais de um programa executando no mesmo endereço eles também terão acesso as
+informações salva, para evitar que outros programas acessem ele devemos criar um
+segundo endereço de salvamento
+
+Ele é uma API sincrona, assim permitingo utilizar ele com o useState

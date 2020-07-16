@@ -1,4 +1,4 @@
-import React, { useState, FormEvent } from 'react';
+import React, { useState, useEffect, FormEvent } from 'react';
 import { FiChevronRight } from 'react-icons/fi';
 
 import ApiServico from '../../services/api';
@@ -24,7 +24,22 @@ const Home: React.FC = () => {
 	// PARA SALVAR OS CRITERIOS DE BUSCA
 	const [novoRepositorio, setNovoRepositorio] = useState('');
 	// PARA SALVAR OS REPOSITORIOS JA PESQUISADO
-	const [repositorios, setRepositorios] = useState<Repositorio[]>([]);
+	const [repositorios, setRepositorios] = useState<Repositorio[]>(() => {
+		// CRIA UMA FUNCAO PARA DEFINIR COM QUAL VALOR INICIAR
+		const storageRepositorios = localStorage.getItem('@GithubExplorer:repositorios');
+
+		if (storageRepositorios) {
+			// CONVERTE AS INFORMACOES DE UMA STRING PARA ARRAY: JSON.parse
+			return JSON.parse(storageRepositorios);
+		}
+		return [];
+	});
+
+	useEffect(() => {
+		// ATIVA O STORAGE PARA SALVAR AS INFORMACOES NESTE CAMINHO
+		// CONVERTE AS INFORMACOES DE UM ARRAY PARA STRING: JSON.stringify
+		localStorage.setItem('@GithubExplorer:repositorios', JSON.stringify(repositorios));
+	}, [repositorios]);
 
 	async function usuarioAdicionarRepositorio(
 		event: FormEvent<HTMLFormElement>,
