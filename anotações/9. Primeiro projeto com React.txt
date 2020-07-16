@@ -231,3 +231,9 @@ Para evitar que a página recarregue utilizamos a depencia abaixo
   import { Link } from 'react-router-dom'
 
 Também utilizamos alguns comandos para vincular a página de repositorio
+
+--> Estilizando Detalhe
+Uma jeito de programar com facilidade é seguindo esta ordem
+ Primeiro se preucupar com o código HTML
+ Depois implementar a estilização (CSS)
+ Por último colocar os códigos do JavaScript ou TypeScript
