@@ -225,3 +225,9 @@ informações salva, para evitar que outros programas acessem ele devemos criar 
 segundo endereço de salvamento
 
 Ele é uma API sincrona, assim permitingo utilizar ele com o useState
+
+--> Navegando entre rotas
+Para evitar que a página recarregue utilizamos a depencia abaixo
+  import { Link } from 'react-router-dom'
+
+Também utilizamos alguns comandos para vincular a página de repositorio

@@ -9,7 +9,8 @@ const Rota: React.FC = () => (
 	<Switch>
 		{/* DEFINE QUE O CAMINHO DEVE SER EXATO */}
 		<Route path="/" exact component={HomePagina} />
-		<Route path="/repositorio" component={RepositorioPagina} />
+		{/* + DEFINE QUE TUDO DEPOIS DO : PERTENCE AO PARAMETRO DO CAMINHO DO ARQUIVO */}
+		<Route path="/repositorio/:repositorio+" component={RepositorioPagina} />
 	</Switch>
 );
 

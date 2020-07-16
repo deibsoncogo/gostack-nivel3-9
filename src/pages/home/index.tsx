@@ -1,5 +1,6 @@
 import React, { useState, useEffect, FormEvent } from 'react';
 import { FiChevronRight } from 'react-icons/fi';
+import { Link } from 'react-router-dom';
 
 import ApiServico from '../../services/api';
 import { Titulo, CampoPesquisa, Repositorio, Erro } from './styles';
@@ -99,7 +100,8 @@ const Home: React.FC = () => {
 			<Repositorio>
 				{/* REALIZA UMA LISTAGEM DE TODOS DADOS SALVO */}
 				{repositorios.map(repositorio => (
-					<a key={repositorio.full_name} href="teste">
+					// <a key={repositorio.full_name} href="teste">
+					<Link key={repositorio.full_name} to={`/repositorio/${repositorio.full_name}`}>
 						<img src={repositorio.owner.avatar_url} alt={repositorio.owner.login} />
 						<div>
 							<strong>{repositorio.full_name}</strong>
@@ -108,7 +110,7 @@ const Home: React.FC = () => {
 
 						{/* ICONE DE SETA DO CAMPO */}
 						<FiChevronRight size={20} />
-					</a>
+					</Link>
 				))}
 			</Repositorio>
 		</>
