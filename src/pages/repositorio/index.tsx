@@ -3,53 +3,58 @@ import { useRouteMatch, Link } from 'react-router-dom';
 import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
 
 import ApiServico from '../../services/api';
-import { Cabecalho, RepositorioExtra, Issues } from './styles';
 
 import ImagemGithub from '../../assets/imagem-github.svg';
 
-interface RepositorioParams {
-	repositorio: string;
+import { Cabecalho, Informacao, SubInformacao } from './styles';
+
+interface UsuarioParams {
+	usuario: string;
 }
 
-interface Repositorio {
-	full_name: string;
-	description: string;
-	stargazers_count: number;
-	forks_count: number;
-	open_issues_count: number;
-	owner: {
-		login: string;
-		avatar_url: string;
-	};
-}
-
-interface Issues {
+interface Usuario {
 	id: number;
-	title: string;
+	name: string;
+	login: string;
+	avatar_url: string;
+	bio: string;
+	location: string;
+	public_repos: number;
+	followers: number;
+	following: number;
+}
+
+interface Repositorios {
+	id: number;
+	name: string;
 	html_url: string;
-	user: {
+	description: string;
+	owner: {
 		login: string;
 	};
 }
 
 // SEMPRE USAR PRIMEIRA LETRA MAIUSCULA PARA HOOK
 // AMBOS COMANDOS SAO IGUAIS MAIS UM POSSUI O NOME DA TIPAGEM ABREVIADA
-// const Repositorio: React.FunctionComponent = () => {}
-const Repositorio: React.FC = () => {
-	const [repositorio, setRepositorio] = useState<Repositorio | null>(null);
-	const [issues, setIssues] = useState<Issues[]>([]);
+// const Usuario: React.FunctionComponent = () => {}
+const Usuario: React.FC = () => {
+	const [usuario, setUsuario] = useState<Usuario | null>(null);
+	const [repositorios, setRepositorios] = useState<Repositorios[]>([]);
 
-	const { params } = useRouteMatch<RepositorioParams>();
+	const { params } = useRouteMatch<UsuarioParams>();
 
 	useEffect(() => {
-		ApiServico.get(`repos/${params.repositorio}`).then(response => {
-			setRepositorio(response.data);
+		// PARA SABER O CAMINHO DAS INFORMACOES CONSULTAMOS O GITHUB
+		// https://www.api.github.com/
+		ApiServico.get(`users/${params.usuario}`).then(response => {
+			// console.log(response.data); //eslint-disable-line
+			setUsuario(response.data);
 		});
 
-		ApiServico.get(`repos/${params.repositorio}/issues`).then(response => {
-			setIssues(response.data);
+		ApiServico.get(`users/${params.usuario}/repos`).then(response => {
+			setRepositorios(response.data);
 		});
-	}, [params.repositorio]);
+	}, [params.usuario]);
 
 	return (
 		<>
@@ -61,46 +66,53 @@ const Repositorio: React.FC = () => {
 				</Link>
 			</Cabecalho>
 
-			{repositorio && (
-				<RepositorioExtra>
+			{/* CRIA UMA VERIFICACAO TIPO IF */}
+			{usuario && (
+				<Informacao>
 					<header>
-						<img src={repositorio.owner.avatar_url} alt={repositorio.owner.login} />
+						<img
+							// AS DUAS LINHAS ABAIXO POSSUI O MESMO PODER DE VERIFICACAO IF
+							// src={usuario ? usuario.owner.avatar_url : null}
+							// src={usuario?.owner.avatar_url}
+							src={usuario.avatar_url}
+							alt={usuario.login}
+						/>
 						<div>
-							<strong>{repositorio.full_name}</strong>
-							<p>{repositorio.description}</p>
+							<strong>{usuario.name}</strong>
+							<p>{usuario.bio ? usuario.bio : usuario.location}</p>
 						</div>
 					</header>
 					<ul>
 						<li>
-							<strong>{repositorio.stargazers_count}</strong>
-							<span>Stars</span>
+							<strong>{usuario.public_repos}</strong>
+							<span>Repositórios</span>
 						</li>
 						<li>
-							<strong>{repositorio.forks_count}</strong>
-							<span>Forks</span>
+							<strong>{usuario.followers}</strong>
+							<span>Seguidores</span>
 						</li>
 						<li>
-							<strong>{repositorio.open_issues_count}</strong>
-							<span>Issues abertas</span>
+							<strong>{usuario.following}</strong>
+							<span>Seguindo</span>
 						</li>
 					</ul>
-				</RepositorioExtra>
+				</Informacao>
 			)}
 
-			<Issues>
-				{issues.map(issue => (
-					<a key={issue.id} href={issue.html_url}>
+			<SubInformacao>
+				{repositorios.map(repositorio => (
+					<a key={repositorio.id} href={repositorio.html_url}>
 						<div>
-							<strong>{issue.title}</strong>
-							<p>{issue.user.login}</p>
+							<strong>{repositorio.name}</strong>
+							<p>{repositorio?.description}</p>
 						</div>
 
 						<FiChevronRight size={20} />
 					</a>
 				))}
-			</Issues>
+			</SubInformacao>
 		</>
 	);
 };
 
-export default Repositorio;
+export default Usuario;

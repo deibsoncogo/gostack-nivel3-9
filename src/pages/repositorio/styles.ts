@@ -22,7 +22,7 @@ export const Cabecalho = Styled.header`
 	}
 `;
 
-export const RepositorioExtra = Styled.section`
+export const Informacao = Styled.section`
 	margin-top: 80px;
 
 	header {
@@ -77,7 +77,7 @@ export const RepositorioExtra = Styled.section`
 	}
 `;
 
-export const Issues = Styled.div`
+export const SubInformacao = Styled.div`
 	margin-top: 80px;
 
 	a {

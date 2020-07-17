@@ -15,12 +15,12 @@ export const Titulo = Styled.h1`
 `;
 
 // VINCULANDO UMA PROPRIEDADE
-export const CampoPesquisa = Styled.form<Propriedade>`
+export const Pesquisa = Styled.form<Propriedade>`
 	margin-top: 40px;
 	max-width: 700px;
 	display: flex; /* TARFORMA ELE EM UM FLEX */
 
-	/* FAZ QUE TODO input DENTRO DO CampoPesquisa VAI SER ASSIM */
+	/* FAZ QUE TODO input DENTRO DO Pesquisa VAI SER ASSIM */
 	input {
 		flex: 1; /* FAZ O BOTAO OCULPAR TODO ESPACO DISPONIVEL DA TELA */
 		height: 70px; /* ALTURA */
@@ -66,7 +66,7 @@ export const Erro = Styled.span`
 	margin-top: 8px;
 `;
 
-export const Repositorio = Styled.div`
+export const ListarUsuario = Styled.div`
 	margin-top: 80px;
 	max-width: 700px;
 
