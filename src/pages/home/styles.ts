@@ -1,5 +1,6 @@
-import Styled, { css } from 'styled-components';
 import { shade } from 'polished';
+
+import Styled, { css } from 'styled-components';
 
 interface Propriedade {
 	temErro: boolean;

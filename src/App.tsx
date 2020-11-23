@@ -1,8 +1,9 @@
 import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
 
-import GlobalEstilo from './styles/global';
 import Rotas from './routes';
+
+import GlobalEstilo from './styles/global';
 
 const App: React.FC = () => (
 	<>
